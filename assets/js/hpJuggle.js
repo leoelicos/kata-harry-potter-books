@@ -127,7 +127,7 @@ function shiftOne(set) {
 		if (hpSum(set[i]) > hpSum(set[i + 1])) {
 			// iterate through the 5 digits of each arr
 			for (var j = 0; j < set[i].length; j++) {
-				console.log(`i = ${i}, j = ${j}`);
+				// console.log(`i = ${i}, j = ${j}`);
 				if (set[i][j] === 1 && set[i + 1][j] === 0) {
 					shifted[i][j]--;
 					shifted[i + 1][j]++;

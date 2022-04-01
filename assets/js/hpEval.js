@@ -88,9 +88,14 @@ function hpEval(arrs) {
 	var eval;
 	for (var i = 0; i < arrs.length; i++) {
 		eval = 0;
+		var msg = 'Discounts of';
 		for (var j = 0; j < arrs[i].length; j++) {
-			eval += calculateDiscount(arrs[i][j]);
+			var discount = calculateDiscount(arrs[i][j]);
+			eval += discount;
+			msg += ` ${JSON.stringify(arrs[i][j])}`;
 		}
+		msg += ` will give a discount of $${(eval / 100).toFixed(2)}`;
+		console.log(msg);
 		evals.push(eval);
 	}
 

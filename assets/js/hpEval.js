@@ -88,14 +88,23 @@ function hpEval(arrs) {
 	var eval;
 	for (var i = 0; i < arrs.length; i++) {
 		eval = 0;
-		var msg = 'Discounts of';
+		var p = document.createElement('p');
+		p.classList.add('possibleDiscounts');
+		msg = `Best discounts: `;
 		for (var j = 0; j < arrs[i].length; j++) {
 			var discount = calculateDiscount(arrs[i][j]);
 			eval += discount;
-			msg += ` ${JSON.stringify(arrs[i][j])}`;
+			if (j === arrs[i].length - 1 && j != 0) {
+				msg += ' and';
+			} else if (j > 0) {
+				msg += `, `;
+			}
+			msg += ` ${JSON.stringify(arrs[i][j]).split(',').join('')}`;
 		}
-		msg += ` will give a discount of $${(eval / 100).toFixed(2)}`;
-		console.log(msg);
+		msg += `: -$${(eval / 100).toFixed(2)}`;
+		p.textContent = msg;
+		resultsEl.appendChild(p);
+		// console.log(msg);
 		evals.push(eval);
 	}
 

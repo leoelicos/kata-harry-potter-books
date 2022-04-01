@@ -1,19 +1,24 @@
 const hpFilterTests = [
-	{ i: [1], o: [1] },
-	{ i: [0], o: [] },
-	{ i: [0, 0], o: [] },
 	{ i: [1, 0], o: [1] },
+	{ i: [1], o: [1] },
+	{ i: [0, 0], o: [] },
+	{ i: [0], o: [] },
 ];
 
-function hpFilter() {
-	/* 
-   [1] > [1] */
+function hpFilter(arr) {
+	return arr.filter((val) => {
+		return val != 0;
+	});
 }
 
 function testHpFilter() {
 	for (var test = 0; test < hpFilterTests.length; test++) {
-		for (var i = 0; i < hpFilterTests[test].length; i++) {
-			hpFilterTests[test][i];
-		}
+		var testIn = hpFilterTests[test].i;
+		var testOut = hpFilterTests[test].o;
+		var expected = JSON.stringify(testOut);
+		var actual = JSON.stringify(hpFilter(testIn));
+		var testMessage = expected === actual ? 'Passed' : 'Failed';
+		testMessage += `: (Expected hpFilter(${JSON.stringify(testIn)} to equal ${expected}, received ${actual})`;
+		console.log(testMessage);
 	}
 }
